@@ -1,4 +1,12 @@
-//! Regular Expression Engine
+//! Regular Expression Engine Module
+//!
+//! This module contains the implementation of the regular expression engine.
+//! The engine is responsible for determining whether a regular expression matches a search target string.
+//!
+//! This module consists of three components: a parser, an instruction compiler, and an evaluator.
+mod parser;
+mod compiler;
+mod evaluator;
 
 use crate::DynError;
 
