@@ -1,0 +1,5 @@
+# For Rust
+/target
+
+# For IntelliJ
+.idea
