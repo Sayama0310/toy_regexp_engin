@@ -31,5 +31,6 @@ use crate::DynError;
 pub fn is_match(regexp: &str, line: &str) -> Result<bool, DynError> {
     let ast = parser::parse(regexp)?;
     let instructions = compiler::compile(&ast)?;
-    Ok(true)
+    let result = evaluator::evaluate(instructions, line)?;
+    Ok(result)
 }
