@@ -29,6 +29,6 @@ use crate::DynError;
 /// assert_eq!(true, is_match(regexp, line));
 /// ```
 pub fn is_match(regexp: &str, line: &str) -> Result<bool, DynError> {
-    // Implementation goes here
+    let ast = parser::parse(regexp)?;
     Ok(true)
 }
