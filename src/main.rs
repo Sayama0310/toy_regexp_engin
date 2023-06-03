@@ -1,3 +1,7 @@
+mod engine;
+
+use std::io::BufRead;
+
 pub type DynError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 fn main() -> Result<(), DynError> {
@@ -19,7 +23,15 @@ fn main() -> Result<(), DynError> {
 ///
 /// Note: This method assumes that the file exists and is accessible.
 fn matches_regex_in_file(regex: &str, file_name: &str) -> Result<(), DynError> {
-    // Implementation goes here
+    let file = std::fs::File::open(file_name)?;
+    let reader = std::io::BufReader::new(file);
+
+    for line in reader.lines() {
+        let line = line?;
+        if engine::is_match(regex, &line)? {
+            println!("{}", line);
+        }
+    }
     Ok(())
 }
 
