@@ -1,7 +1,6 @@
 //! Compiler Module
 //!
 //! This module contains the implementation of the regular expression instruction compiler.
-use std::error::Error;
 use crate::engine::parser::AST;
 
 pub fn compile(ast: &AST) -> Result<Vec<Instruction>, CompileError> {
@@ -50,4 +49,4 @@ impl std::fmt::Display for CompileError {
     }
 }
 
-impl Error for CompileError {}
+impl std::error::Error for CompileError {}

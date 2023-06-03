@@ -1,9 +1,6 @@
 //! Parser Module
 //!
 //! This module contains the implementation of the regular expression parser.
-use std::error::Error;
-use std::fmt::{Display, Formatter};
-
 pub fn parse(regexp: &str) -> Result<AST, ParseError> {
     let mut parser = Parser::new(regexp);
     parser.parse()
@@ -22,7 +19,7 @@ impl Parser<'_> {
     }
 
     fn parse(&mut self) -> Result<AST, ParseError> {
-        // TODO: Implement the parser.
+        // TODO Implement the parser.
         Ok(AST::Dot)
     }
 }
@@ -45,8 +42,8 @@ pub enum ParseError {
     UnexpectedCharacter(char),
 }
 
-impl Display for ParseError {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+impl std::fmt::Display for ParseError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             ParseError::UnexpectedCharacter(c) => {
                 write!(f, "Unexpected character: {}", c)
@@ -55,4 +52,4 @@ impl Display for ParseError {
     }
 }
 
-impl Error for ParseError {}
+impl std::error::Error for ParseError {}
